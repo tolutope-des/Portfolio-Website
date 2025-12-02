@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tolutope Adebayo | Product Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Manrope', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+            },
+            colors: {
+              border: "hsl(var(--border))",
+              input: "hsl(var(--input))",
+              ring: "hsl(var(--ring))",
+              background: "hsl(var(--background))",
+              foreground: "hsl(var(--foreground))",
+              primary: {
+                DEFAULT: "hsl(var(--primary))",
+                foreground: "hsl(var(--primary-foreground))",
+              },
+              secondary: {
+                DEFAULT: "hsl(var(--secondary))",
+                foreground: "hsl(var(--secondary-foreground))",
+              },
+              muted: {
+                DEFAULT: "hsl(var(--muted))",
+                foreground: "hsl(var(--muted-foreground))",
+              },
+              accent: {
+                DEFAULT: "hsl(var(--accent))",
+                foreground: "hsl(var(--accent-foreground))",
+              },
+            },
+            animation: {
+              'spin-slow': 'spin 12s linear infinite',
+            }
+          },
+        },
+      }
+    </script>
+    <style type="text/tailwindcss">
+      @layer base {
+        :root {
+          --background: 0 0% 98%;
+          --foreground: 0 0% 3.9%;
+          --card: 0 0% 100%;
+          --card-foreground: 0 0% 3.9%;
+          --popover: 0 0% 100%;
+          --popover-foreground: 0 0% 3.9%;
+          --primary: 0 0% 9%;
+          --primary-foreground: 0 0% 98%;
+          --secondary: 0 0% 96.1%;
+          --secondary-foreground: 0 0% 9%;
+          --muted: 0 0% 96.1%;
+          --muted-foreground: 0 0% 45.1%;
+          --accent: 0 0% 96.1%;
+          --accent-foreground: 0 0% 9%;
+          --destructive: 0 84.2% 60.2%;
+          --destructive-foreground: 0 0% 98%;
+          --border: 0 0% 89.8%;
+          --input: 0 0% 89.8%;
+          --ring: 0 0% 3.9%;
+          --radius: 0.5rem;
+        }
+        .dark {
+          --background: 0 0% 3.9%;
+          --foreground: 0 0% 98%;
+          --card: 0 0% 3.9%;
+          --card-foreground: 0 0% 98%;
+          --popover: 0 0% 3.9%;
+          --popover-foreground: 0 0% 98%;
+          --primary: 0 0% 98%;
+          --primary-foreground: 0 0% 9%;
+          --secondary: 0 0% 14.9%;
+          --secondary-foreground: 0 0% 98%;
+          --muted: 0 0% 14.9%;
+          --muted-foreground: 0 0% 63.9%;
+          --accent: 0 0% 14.9%;
+          --accent-foreground: 0 0% 98%;
+          --destructive: 0 62.8% 30.6%;
+          --destructive-foreground: 0 0% 98%;
+          --border: 0 0% 14.9%;
+          --input: 0 0% 14.9%;
+          --ring: 0 0% 83.1%;
+        }
+      }
+      @layer base {
+        * {
+          @apply border-border;
+        }
+        body {
+          @apply bg-background text-foreground;
+        }
+        /* Custom Scrollbar for Webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: rgba(0,0,0,0.1);
+            border-radius: 20px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background-color: rgba(255,255,255,0.1);
+        }
+      }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.25"
+  }
+}
+</script>
+</head>
+  <body class="antialiased selection:bg-neutral-900 selection:text-white dark:selection:bg-white dark:selection:text-black">
+    <div id="root"></div>
+  </body>
+</html>
