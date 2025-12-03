@@ -20,6 +20,18 @@ const Navigation: React.FC<NavigationProps> = ({ onNavClick }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
+
   const handleNavClick = (id: string) => {
     setIsMobileMenuOpen(false);
     onNavClick(id);
@@ -32,12 +44,12 @@ const Navigation: React.FC<NavigationProps> = ({ onNavClick }) => {
     { name: 'Contact', id: 'contact' }
   ];
 
-  // Ultra-smooth spring configuration for "Million Dollar" feel
+  // Ultra-fast snappy spring configuration
   const transitionSpring = {
     type: "spring" as const,
-    stiffness: 300,
-    damping: 30,
-    mass: 0.8
+    stiffness: 400,
+    damping: 35,
+    mass: 0.6
   };
 
   return (
@@ -102,10 +114,9 @@ const Navigation: React.FC<NavigationProps> = ({ onNavClick }) => {
                 {!isMobileMenuOpen ? (
                     <motion.button
                         key="menu-trigger"
-                        layoutId="nav-pill"
-                        initial={{ scale: 0.9, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        exit={{ scale: 0.9, opacity: 0, transition: { duration: 0.05 } }}
+                        initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                        animate={{ scale: 1, opacity: 1, y: 0 }}
+                        exit={{ scale: 0.9, opacity: 0, y: 20, transition: { duration: 0.1 } }}
                         transition={transitionSpring}
                         onClick={() => setIsMobileMenuOpen(true)}
                         className="h-14 px-8 bg-foreground/90 text-background backdrop-blur-md rounded-full shadow-2xl flex items-center gap-3 active:scale-95"
@@ -116,15 +127,16 @@ const Navigation: React.FC<NavigationProps> = ({ onNavClick }) => {
                 ) : (
                     <motion.div
                         key="menu-content"
-                        layoutId="nav-pill"
+                        initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 20, scale: 0.95, transition: { duration: 0.15, ease: "easeOut" } }}
                         transition={transitionSpring}
                         className="bg-background/95 backdrop-blur-3xl border border-white/10 dark:border-white/5 rounded-[2rem] shadow-[0_30px_60px_rgba(0,0,0,0.5)] overflow-hidden w-[90vw] max-w-sm"
                     >
                         <motion.div 
                             className="p-6 flex flex-col"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1, transition: { delay: 0.1, duration: 0.2 } }}
-                            exit={{ opacity: 0, transition: { duration: 0.05 } }} // Instant exit to prevent shape distortion
+                            // No delay on exit for instant responsiveness
+                            exit={{ opacity: 0, transition: { duration: 0.05 } }} 
                         >
                              <div className="flex justify-between items-center mb-6 pb-4 border-b border-border/10">
                                 <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Navigation</span>
@@ -142,7 +154,8 @@ const Navigation: React.FC<NavigationProps> = ({ onNavClick }) => {
                                         key={item.id}
                                         initial={{ opacity: 0, x: -10 }}
                                         animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: 0.1 + (i * 0.05) }}
+                                        // Faster stagger
+                                        transition={{ delay: 0.05 + (i * 0.03), duration: 0.2 }}
                                         onClick={() => handleNavClick(item.id)}
                                         className="text-left text-3xl font-light tracking-tight hover:pl-4 transition-all duration-300 py-2 active:text-muted-foreground"
                                     >
@@ -153,7 +166,7 @@ const Navigation: React.FC<NavigationProps> = ({ onNavClick }) => {
                                 <motion.div 
                                     initial={{ opacity: 0, x: -10 }}
                                     animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: 0.3 }}
+                                    transition={{ delay: 0.2, duration: 0.2 }}
                                     className="pt-6 mt-4 border-t border-border/10"
                                 >
                                     <a

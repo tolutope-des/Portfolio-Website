@@ -14,7 +14,11 @@ const App: React.FC = () => {
 
   const handleNavClick = (sectionId: string) => {
     setSelectedProject(null);
-    if (sectionId === 'home') return;
+    
+    if (sectionId === 'home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
     
     // Allow state to update and DOM to mount before scrolling
     setTimeout(() => {
