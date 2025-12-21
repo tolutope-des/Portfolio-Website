@@ -1,19 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useLayoutEffect } from 'react';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import ProjectCard from './components/ProjectCard';
 import ProjectDetail from './components/ProjectDetail';
 import AiAssistant from './components/AiAssistant';
 import InspirationCard from './components/InspirationCard';
+import ConceptModal from './components/ConceptModal';
 import { PROJECTS, ABOUT_PARAGRAPHS, SOCIALS, INSPIRATIONS, EMAIL_ADDRESS, RESUME_URL } from './constants';
-import { Project } from './types';
+import { Project, Inspiration } from './types';
 import { motion, AnimatePresence } from 'framer-motion';
+
+const ScrollRestorer: React.FC<{ scrollY: number }> = ({ scrollY }) => {
+  useLayoutEffect(() => {
+    window.scrollTo(0, scrollY);
+  }, [scrollY]);
+  return null;
+};
 
 const App: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [selectedInspiration, setSelectedInspiration] = useState<Inspiration | null>(null);
+  
+  // Store the scroll position to restore it when returning from a case study
+  const scrollPosition = useRef(0);
 
   const handleNavClick = (sectionId: string) => {
     setSelectedProject(null);
+    setSelectedInspiration(null);
     
     if (sectionId === 'home') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -27,6 +40,11 @@ const App: React.FC = () => {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     }, 100);
+  };
+
+  const handleProjectClick = (project: Project) => {
+    scrollPosition.current = window.scrollY;
+    setSelectedProject(project);
   };
 
   return (
@@ -49,6 +67,7 @@ const App: React.FC = () => {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
             >
+                <ScrollRestorer scrollY={scrollPosition.current} />
                 <Hero />
 
                 {/* WORK SECTION */}
@@ -70,7 +89,7 @@ const App: React.FC = () => {
                             key={project.id} 
                             project={project} 
                             index={index} 
-                            onClick={() => setSelectedProject(project)}
+                            onClick={() => handleProjectClick(project)}
                         />
                       ))}
                     </div>
@@ -92,7 +111,11 @@ const App: React.FC = () => {
 
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
                       {INSPIRATIONS.map((inspiration) => (
-                        <InspirationCard key={inspiration.id} inspiration={inspiration} />
+                        <InspirationCard 
+                            key={inspiration.id} 
+                            inspiration={inspiration} 
+                            onClick={() => setSelectedInspiration(inspiration)}
+                        />
                       ))}
                     </div>
                   </div>
@@ -206,6 +229,16 @@ const App: React.FC = () => {
                 </section>
             </motion.div>
           )}
+        </AnimatePresence>
+
+        {/* Concept/Inspiration Modal */}
+        <AnimatePresence>
+            {selectedInspiration && (
+                <ConceptModal 
+                    inspiration={selectedInspiration} 
+                    onClose={() => setSelectedInspiration(null)} 
+                />
+            )}
         </AnimatePresence>
       </main>
 

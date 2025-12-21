@@ -14,7 +14,7 @@ const Navigation: React.FC<NavigationProps> = ({ onNavClick }) => {
   // Handle scroll effect for glassmorphism intensity
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -57,27 +57,37 @@ const Navigation: React.FC<NavigationProps> = ({ onNavClick }) => {
       {/* DESKTOP NAVIGATION (Hidden on Mobile) */}
       <nav 
         className={`hidden md:flex fixed top-0 left-0 w-full px-12 py-6 justify-between items-center z-50 transition-all duration-500 ${
-          scrolled ? 'bg-background/80 backdrop-blur-xl border-b border-foreground/5' : 'bg-transparent border-transparent'
+          scrolled 
+            ? 'bg-background/90 backdrop-blur-xl border-b border-border/50 shadow-sm' 
+            : 'bg-transparent border-transparent'
         }`}
       >
         {/* Logo */}
-        <div 
-          className="text-lg font-bold tracking-tighter uppercase cursor-pointer text-foreground mix-blend-exclusion active:scale-95 transition-transform"
+        <button 
+          className={`text-lg font-bold tracking-tighter uppercase cursor-pointer transition-colors ${
+            scrolled ? 'text-foreground' : 'text-foreground mix-blend-exclusion'
+          }`}
           onClick={() => handleNavClick('home')}
         >
           TA( )
-        </div>
+        </button>
 
         {/* Desktop Menu */}
-        <ul className="flex items-center space-x-8 text-sm font-medium text-foreground mix-blend-exclusion">
+        <ul className={`flex items-center space-x-8 text-sm font-medium transition-colors ${
+            scrolled ? 'text-muted-foreground' : 'text-foreground mix-blend-exclusion'
+        }`}>
           {navLinks.map((item) => (
             <li key={item.name} className="flex items-center">
                <button
                   onClick={() => handleNavClick(item.id)}
-                  className="relative group cursor-pointer uppercase tracking-wide opacity-70 hover:opacity-100 transition-opacity p-1"
+                  className={`relative group cursor-pointer uppercase tracking-wide transition-colors p-1 ${
+                      scrolled 
+                        ? 'hover:text-foreground' 
+                        : 'opacity-70 hover:opacity-100'
+                  }`}
                 >
                   {item.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-foreground transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-current transition-all duration-300 group-hover:w-full" />
                 </button>
             </li>
           ))}
@@ -88,10 +98,14 @@ const Navigation: React.FC<NavigationProps> = ({ onNavClick }) => {
               href={RESUME_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative group cursor-pointer uppercase tracking-wide opacity-70 hover:opacity-100 transition-opacity p-1 flex items-center gap-1"
+              className={`relative group cursor-pointer uppercase tracking-wide transition-colors p-1 flex items-center gap-1 ${
+                  scrolled 
+                    ? 'hover:text-foreground' 
+                    : 'opacity-70 hover:opacity-100'
+              }`}
             >
               Resume
-              <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-foreground transition-all duration-300 group-hover:w-full" />
+              <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-current transition-all duration-300 group-hover:w-full" />
             </a>
           </li>
         </ul>
@@ -99,12 +113,21 @@ const Navigation: React.FC<NavigationProps> = ({ onNavClick }) => {
 
       {/* MOBILE NAVIGATION SYSTEM */}
       
-      {/* 1. Mobile Logo (Fixed Top Left) */}
+      {/* 1. Mobile Top Bar (Fixed) */}
       <div 
-        className="md:hidden fixed top-6 left-5 z-50 text-base font-bold tracking-tighter uppercase text-foreground mix-blend-exclusion pointer-events-auto"
-        onClick={() => handleNavClick('home')}
+        className={`md:hidden fixed top-0 left-0 w-full h-16 px-6 z-50 flex items-center transition-all duration-300 ${
+            scrolled 
+              ? 'bg-background/90 backdrop-blur-md border-b border-border/50 shadow-sm' 
+              : 'bg-transparent'
+        }`}
       >
-        TA( )
+        <button 
+            className="text-lg font-bold tracking-tighter uppercase text-foreground relative z-50 w-full text-left h-full flex items-center"
+            onClick={() => handleNavClick('home')}
+            aria-label="Go to Homepage"
+        >
+            TA( )
+        </button>
       </div>
 
       {/* 2. Floating Dock Trigger / Menu */}
@@ -119,7 +142,7 @@ const Navigation: React.FC<NavigationProps> = ({ onNavClick }) => {
                         exit={{ scale: 0.9, opacity: 0, y: 20, transition: { duration: 0.1 } }}
                         transition={transitionSpring}
                         onClick={() => setIsMobileMenuOpen(true)}
-                        className="h-14 px-8 bg-foreground/90 text-background backdrop-blur-md rounded-full shadow-2xl flex items-center gap-3 active:scale-95"
+                        className="h-14 px-8 bg-foreground text-background backdrop-blur-md rounded-full shadow-2xl flex items-center gap-3 active:scale-95 border border-white/10"
                     >
                         <Menu size={18} />
                         <span className="text-sm font-bold uppercase tracking-widest">Menu</span>
@@ -135,7 +158,6 @@ const Navigation: React.FC<NavigationProps> = ({ onNavClick }) => {
                     >
                         <motion.div 
                             className="p-6 flex flex-col"
-                            // No delay on exit for instant responsiveness
                             exit={{ opacity: 0, transition: { duration: 0.05 } }} 
                         >
                              <div className="flex justify-between items-center mb-6 pb-4 border-b border-border/10">
@@ -154,7 +176,6 @@ const Navigation: React.FC<NavigationProps> = ({ onNavClick }) => {
                                         key={item.id}
                                         initial={{ opacity: 0, x: -10 }}
                                         animate={{ opacity: 1, x: 0 }}
-                                        // Faster stagger
                                         transition={{ delay: 0.05 + (i * 0.03), duration: 0.2 }}
                                         onClick={() => handleNavClick(item.id)}
                                         className="text-left text-3xl font-light tracking-tight hover:pl-4 transition-all duration-300 py-2 active:text-muted-foreground"

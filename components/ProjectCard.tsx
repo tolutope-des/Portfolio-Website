@@ -34,8 +34,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onClick }) =>
           <p className="text-neutral-500 dark:text-neutral-400 text-sm md:text-base">{project.category} — {project.year}</p>
         </div>
         <div className="flex items-center gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 transform md:translate-y-4 md:group-hover:translate-y-0">
-            <span className="text-xs md:text-sm uppercase tracking-wider font-medium hidden sm:inline-block">View Case Study</span>
-            <ArrowUpRight className="w-5 h-5 text-foreground" />
+            <span className="text-xs md:text-sm uppercase tracking-wider font-medium hidden sm:inline-block">
+                {project.caseStudy ? 'View Case Study' : 'Coming Soon'}
+            </span>
+            {project.caseStudy ? (
+                <ArrowUpRight className="w-5 h-5 text-foreground" />
+            ) : (
+                <span className="w-5 h-5 flex items-center justify-center">
+                    <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
+                </span>
+            )}
         </div>
       </div>
     </motion.div>
