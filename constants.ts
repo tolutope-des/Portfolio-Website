@@ -1,7 +1,7 @@
 import { Project, SocialLink, Inspiration } from './types';
 
 // Add timestamp to force cache refresh
-const v = "?v=" + new Date().getTime();
+// const v = "?v=" + new Date().getTime();
 
 export const PROJECTS: Project[] = [
   {
@@ -9,7 +9,7 @@ export const PROJECTS: Project[] = [
     title: 'Driver Event App (FTN)',
     category: 'Logistics Platform',
     year: '2024',
-    image: `/images/projects/ftn-hero.jpg${v}`,
+    image: `/images/projects/ftn-hero.jpg`,
     description: 'Enabling real-time driver updates and proactive monitoring for logistics operations teams.',
     caseStudy: {
       role: 'Product Designer',
@@ -81,7 +81,7 @@ export const PROJECTS: Project[] = [
           subProblem: 'Drivers reported events inconsistently via calls/text.',
           decision: 'Created a standardized driver-facing event update flow.',
           why: 'Replaced informal communication with structured, timestamped data points.',
-          image: `/images/projects/ftn-decision-01.jpg${v}`
+          image: `/images/projects/ftn-decision-01.jpg`
         },
         {
           id: 'd2',
@@ -89,7 +89,7 @@ export const PROJECTS: Project[] = [
           subProblem: 'Admins had to dig for information.',
           decision: 'Built a status-based admin dashboard grouping drivers by state.',
           why: 'Enabled admins to scan for exceptions rather than monitoring everyone.',
-          image: `/images/projects/ftn-decision-02.jpg${v}`
+          image: `/images/projects/ftn-decision-02.jpg`
         },
         {
           id: 'd3',
@@ -97,7 +97,7 @@ export const PROJECTS: Project[] = [
           subProblem: 'Knowing a driver is "Delayed" isn\'t enough.',
           decision: 'Introduced sub-statuses revealed on interaction.',
           why: 'Preserved dashboard clarity while allowing drill-down for actionable details.',
-          image: `/images/projects/ftn-decision-03.jpg${v}`
+          image: `/images/projects/ftn-decision-03.jpg`
         },
         {
           id: 'd4',
@@ -105,7 +105,7 @@ export const PROJECTS: Project[] = [
           subProblem: 'A hardcoded sequence wouldn\'t scale.',
           decision: 'Developed a Workflow Configuration feature.',
           why: 'Allowed admins to define sequences, loops, and rules, turning a feature into a platform capability.',
-          image: `/images/projects/ftn-decision-04.jpg${v}`
+          image: `/images/projects/ftn-decision-04.jpg`
         }
       ],
       solutions: [
@@ -116,7 +116,7 @@ export const PROJECTS: Project[] = [
             'Clear next-step prompts',
             'Designed for quick field interaction'
           ],
-          image: `/images/projects/ftn-solution-01.jpg${v}`
+          image: `/images/projects/ftn-solution-01.jpg`
         },
         {
           title: 'Admin Dashboard',
@@ -126,7 +126,7 @@ export const PROJECTS: Project[] = [
             'Detailed activity logs',
             'Aligned with Design System'
           ],
-          image: `/images/projects/ftn-solution-02.jpg${v}`
+          image: `/images/projects/ftn-solution-02.jpg`
         },
         {
           title: 'Workflow Configuration',
@@ -136,7 +136,7 @@ export const PROJECTS: Project[] = [
             'Conditional paths',
             'Loop support for recurring tasks'
           ],
-          image: `/images/projects/ftn-solution-03.jpg${v}`
+          image: `/images/projects/ftn-solution-03.jpg`
         },
         {
           title: 'Notifications & Alerts',
@@ -146,7 +146,7 @@ export const PROJECTS: Project[] = [
             'Exception-based alerts',
             'Reduced monitoring noise'
           ],
-          image: `/images/projects/ftn-solution-04.jpg${v}`
+          image: `/images/projects/ftn-solution-04.jpg`
         }
       ],
       impact: {
@@ -178,7 +178,7 @@ export const PROJECTS: Project[] = [
     title: 'Belyfted Banking as a Service',
     category: 'Fintech Platform',
     year: '2023',
-    image: `/images/projects/belyfted-hero.jpg${v}`,
+    image: `/images/projects/belyfted-hero.jpg`,
     description: 'Enabling secure local UK-to-UK transactions within the Belyfted platform, built with strong compliance and user fund protection.',
     caseStudy: {
       role: 'Product Designer',
@@ -247,7 +247,7 @@ export const PROJECTS: Project[] = [
           subProblem: 'Compliance requires multiple verification steps (KYC, AML checks, identity verification).',
           decision: 'Use progressive disclosure, showing only necessary steps at each stage, with clear instructions and real-time feedback.',
           why: 'Reduces cognitive load while ensuring all regulatory requirements are met.',
-          image: `/images/projects/belyfted-decision-01.jpg${v}`
+          image: `/images/projects/belyfted-decision-01.jpg`
         },
         {
           id: 'Problem 2',
@@ -255,7 +255,7 @@ export const PROJECTS: Project[] = [
           subProblem: 'Large transfers can cause anxiety if users are uncertain whether their money is protected.',
           decision: 'Added secure transaction indicators, real-time status updates, and transparent messaging about regulatory protections.',
           why: 'Builds trust and prevents confusion or unnecessary support requests.',
-          image: `/images/projects/belyfted-decision-02.jpg${v}`
+          image: `/images/projects/belyfted-decision-02.jpg`
         },
         {
           id: 'Problem 3',
@@ -263,7 +263,7 @@ export const PROJECTS: Project[] = [
           subProblem: 'Compliance or banking rules may trigger transaction blocks.',
           decision: 'Design clear error states and guidance, with actionable steps (e.g., “Verify identity to proceed”) and contact options.',
           why: 'Prevents user frustration and reduces support load.',
-          image: `/images/projects/belyfted-decision-03.jpg${v}`
+          image: `/images/projects/belyfted-decision-03.jpg`
         }
       ],
       solutions: [
@@ -274,7 +274,7 @@ export const PROJECTS: Project[] = [
             'Real-time validation and feedback',
             'Intuitive beneficiary management'
           ],
-          image: `/images/projects/belyfted-solution-01.jpg${v}`
+          image: `/images/projects/belyfted-solution-01.jpg`
         },
         {
           title: 'Security & Compliance',
@@ -283,7 +283,7 @@ export const PROJECTS: Project[] = [
             'Reassuring confirmations for completed transactions',
             'Secure authentication steps integrated seamlessly'
           ],
-          image: `/images/projects/belyfted-solution-02.jpg${v}`
+          image: `/images/projects/belyfted-solution-02.jpg`
         },
         {
           title: 'Error Handling',
@@ -292,7 +292,7 @@ export const PROJECTS: Project[] = [
             'Clear guidance for blocked or pending transactions',
             'Direct access to support for critical issues'
           ],
-          image: `/images/projects/belyfted-solution-03.jpg${v}`
+          image: `/images/projects/belyfted-solution-03.jpg`
         }
       ],
       impact: {
@@ -324,7 +324,7 @@ export const PROJECTS: Project[] = [
     title: 'Marketplace',
     category: 'Logistics SaaS',
     year: '2024',
-    image: `/images/projects/marketplace-hero.jpg${v}`,
+    image: `/images/projects/marketplace-hero.jpg`,
     description: 'A unified logistics marketplace connecting shippers with carriers to streamline freight procurement and capacity management.'
   },
   {
@@ -332,7 +332,7 @@ export const PROJECTS: Project[] = [
     title: 'Mylabscope',
     category: 'Healthcare Platform',
     year: '2024',
-    image: `/images/projects/mylabscope-hero.jpg${v}`,
+    image: `/images/projects/mylabscope-hero.jpg`,
     description: 'A comprehensive solution for laboratories and hospitals to manage patient samples, diagnostic workflows, and results.'
   }
 ];
@@ -342,7 +342,7 @@ export const INSPIRATIONS: Inspiration[] = [
     id: 'c1',
     title: 'Glassmorphism Music Player',
     category: 'UI Concept',
-    image: `/images/concepts/music-player.jpg${v}`,
+    image: `/images/concepts/music-player.jpg`,
     link: 'https://x.com/ToluTopsy', // Replace with actual post link
     platform: 'twitter'
   },
@@ -350,7 +350,7 @@ export const INSPIRATIONS: Inspiration[] = [
     id: 'c2',
     title: 'Crypto Wallet Dark Mode',
     category: 'Mobile Design',
-    image: `/images/concepts/crypto-wallet.jpg${v}`,
+    image: `/images/concepts/crypto-wallet.jpg`,
     link: 'https://dribbble.com',
     platform: 'dribbble'
   },
@@ -358,7 +358,7 @@ export const INSPIRATIONS: Inspiration[] = [
     id: 'c3',
     title: 'AI Chat Interface',
     category: 'Interaction',
-    image: `/images/concepts/ai-chat.jpg${v}`,
+    image: `/images/concepts/ai-chat.jpg`,
     link: 'https://www.linkedin.com/in/tolutopeadebayo/',
     platform: 'linkedin'
   },
@@ -366,7 +366,7 @@ export const INSPIRATIONS: Inspiration[] = [
     id: 'c4',
     title: 'Minimalist Weather App',
     category: 'Concept',
-    image: `/images/concepts/weather-app.jpg${v}`,
+    image: `/images/concepts/weather-app.jpg`,
     link: 'https://www.behance.net/tolutopeadebayo',
     platform: 'behance'
   }
@@ -378,7 +378,7 @@ export const SOCIALS: SocialLink[] = [
   { name: 'Behance', url: 'https://www.behance.net/tolutopeadebayo' }
 ];
 
-export const AVATAR_IMAGE = `/images/avatar/profile.jpg${v}`;
+export const AVATAR_IMAGE = `/images/avatar/profile.png`;
 
 export const EMAIL_ADDRESS = "tolutopeadebayo@gmail.com";
 
