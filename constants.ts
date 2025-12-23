@@ -378,7 +378,7 @@ export const SOCIALS: SocialLink[] = [
   { name: 'Behance', url: 'https://www.behance.net/tolutopeadebayo' }
 ];
 
-export const AVATAR_IMAGE = `/images/avatar/profile.png`;
+export const AVATAR_IMAGE = `./images/avatar/profile.png`;
 
 export const EMAIL_ADDRESS = "tolutopeadebayo@gmail.com";
 
