@@ -37,7 +37,7 @@ const ConceptModal: React.FC<ConceptModalProps> = ({ inspiration, onClose }) => 
         {/* Close Button - Fixed on mobile to ensure it's always visible above the scrollable content */}
         <button
           onClick={onClose}
-          className="fixed md:absolute top-4 right-4 z-[70] p-2.5 rounded-full bg-background/80 backdrop-blur-md border border-border text-foreground hover:bg-background transition-colors shadow-sm"
+          className="fixed md:absolute top-24 md:top-4 right-4 z-[100] p-2.5 rounded-full bg-background/80 backdrop-blur-md border border-border text-foreground hover:bg-background transition-colors shadow-sm"
           aria-label="Close"
         >
           <X size={24} />
@@ -47,7 +47,7 @@ const ConceptModal: React.FC<ConceptModalProps> = ({ inspiration, onClose }) => 
         <div className="flex flex-col md:flex-row w-full h-full overflow-y-auto md:overflow-hidden">
 
           {/* Image Section - Main Content */}
-          <div className="flex-1 bg-neutral-100 dark:bg-neutral-900 relative order-1 md:h-full md:overflow-y-auto no-scrollbar">
+          <div className="flex-1 bg-neutral-100 dark:bg-neutral-900 relative order-2 md:order-1 md:h-full md:overflow-y-auto no-scrollbar">
             {/* Background blur effect */}
             <div
               className="fixed inset-0 opacity-20 blur-3xl scale-110 pointer-events-none"
@@ -77,7 +77,7 @@ const ConceptModal: React.FC<ConceptModalProps> = ({ inspiration, onClose }) => 
           </div>
 
           {/* Info Section */}
-          <div className="w-full md:w-[400px] bg-background p-6 md:p-10 shrink-0 border-t md:border-t-0 md:border-l border-border/50 order-2 overflow-y-auto flex flex-col md:justify-center">
+          <div className="w-full md:w-[400px] bg-background p-6 md:p-10 shrink-0 border-t md:border-t-0 md:border-l border-border/50 order-1 md:order-2 overflow-y-auto flex flex-col md:justify-center">
             {/* Content */}
             <div className="md:mt-0 pb-10 md:pb-0">
               <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-3 block">
