@@ -177,7 +177,7 @@ export const PROJECTS: Project[] = [
     id: '02',
     title: 'Belyfted Banking as a Service',
     category: 'Fintech Platform',
-    year: '2023',
+    year: '2025',
     image: `/images/projects/belyfted-hero.jpg`,
     description: 'Enabling secure local UK-to-UK transactions within the Belyfted platform, built with strong compliance and user fund protection.',
     caseStudy: {
@@ -323,7 +323,7 @@ export const PROJECTS: Project[] = [
     id: '03',
     title: 'Marketplace',
     category: 'Logistics SaaS',
-    year: '2024',
+    year: '2025',
     image: `/images/projects/marketplace-hero.jpg`,
     description: 'A unified logistics marketplace connecting shippers with carriers to streamline freight procurement and capacity management.'
   },
@@ -331,8 +331,8 @@ export const PROJECTS: Project[] = [
     id: '04',
     title: 'Mylabscope',
     category: 'Healthcare Platform',
-    year: '2024',
-    image: `/images/projects/mylabscope-hero.jpg`,
+    year: '2025',
+    image: `/images/projects/mylapscope-hero.jpg`,
     description: 'A comprehensive solution for laboratories and hospitals to manage patient samples, diagnostic workflows, and results.'
   }
 ];
@@ -341,39 +341,59 @@ export const INSPIRATIONS: Inspiration[] = [
   {
     id: 'c1',
     title: 'Symptom Watch App Screenshots',
-    category: 'UI Concept',
+    category: 'Mobile App Design',
     description: 'I am excited to share screenshots from a mobile app I have been working on. Symptom watch leverages the power of AI to help users track and understand their health. Users can record their symptoms and see trends over time, with the app providing insights like average symptom severity and symptom-free days.',
-    image: `/images/concepts/Linkedin.png`,
+    image: `/images/concepts/symptomwatchcoverscreen.png`,
     gallery: [
-      `/images/concepts/Linkedin.png`,
-      `/images/concepts/Linkedin.png`
+      `/images/concepts/symptomwatch1.png`,
+      `/images/concepts/symptomwatch2.png`,
+      `/images/concepts/symptomwatch3.png`,
+      `/images/concepts/symptomwatch4.png`
     ],
-    link: 'https://x.com/ToluTopsy', // Replace with actual post link
-    platform: 'twitter'
+    //link: 'https://x.com/ToluTopsy', // Replace with actual post link
+    //platform: 'twitter'
   },
   {
     id: 'c2',
-    title: 'Crypto Wallet Dark Mode',
-    category: 'Mobile Design',
-    image: `/images/concepts/crypto-wallet.jpg`,
-    link: 'https://dribbble.com',
-    platform: 'dribbble'
+    title: 'Fintech Mobile App Design',
+    category: 'Mobile App Design',
+    image: `/images/concepts/410shots_so.png`,
+    gallery: [
+      `/images/concepts/410shots_so.png`,
+      `/images/concepts/514shots_so.png`,
+      '/images/concepts/750shots_so.png',
+      '/images/concepts/998shots_so.png',
+      '/images/concepts/356shots_so.png',
+      '/images/concepts/826shots_so.png'
+    ],
+    //link: 'https://dribbble.com',
+    //platform: 'dribbble'
   },
   {
     id: 'c3',
-    title: 'AI Chat Interface',
-    category: 'Interaction',
-    image: `/images/concepts/ai-chat.jpg`,
-    link: 'https://www.linkedin.com/in/tolutopeadebayo/',
-    platform: 'linkedin'
+    title: 'SAAS Onboarding Revamp',
+    category: 'SAAS Design',
+    description: 'A comprehensive redesign of a SaaS onboarding flow to improve user activation and retention. The goal was to reduce friction during the initial setup process while educating users on key features. By introducing a personalized welcome sequence and interactive checklists, we significantly increased the completion rate of the "first value" action.',
+    image: `/images/concepts/Onboarding0.png`,
+    gallery: [
+      `/images/concepts/Onboarding1.png`,
+      `/images/concepts/Onboarding2.png`,
+      '/images/concepts/Onboarding3.png',
+      '/images/concepts/Onboarding4.png',
+      '/images/concepts/Onboarding5.png',
+      '/images/concepts/Onboarding6.png'
+    ],
+    //link: 'https://www.linkedin.com/in/tolutopeadebayo/',
+    //platform: 'linkedin'
   },
   {
     id: 'c4',
-    title: 'Minimalist Weather App',
-    category: 'Concept',
-    image: `/images/concepts/weather-app.jpg`,
-    link: 'https://www.behance.net/tolutopeadebayo',
-    platform: 'behance'
+    title: 'Data Collection Dashboard',
+    category: 'Concept Project',
+    description: 'A centralized hub designed to streamline data collection and payment tracking. This dashboard allows users to monitor key metrics like total responses and revenue at a glance. It features a simplified form creation process and real-time activity feeds to keep teams aligned on data collection progress.',
+    image: `/images/concepts/Data collection.png`,
+    //link: 'https://www.behance.net/tolutopeadebayo',
+    //platform: 'behance'
   }
 ];
 

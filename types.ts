@@ -74,8 +74,8 @@ export interface Inspiration {
   description?: string;
   image: string;
   gallery?: string[];
-  link: string;
-  platform: SocialPlatform;
+  link?: string;
+  platform?: SocialPlatform;
 }
 
 export enum CursorVariant {

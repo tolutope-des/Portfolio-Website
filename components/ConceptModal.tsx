@@ -23,73 +23,88 @@ const ConceptModal: React.FC<ConceptModalProps> = ({ inspiration, onClose }) => 
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
-      className="fixed inset-0 z-[60] flex items-center justify-center bg-background/95 backdrop-blur-xl p-0 md:p-8"
+      className="fixed inset-0 z-[100] bg-background/95 backdrop-blur-xl overflow-hidden"
       onClick={onClose}
     >
       <motion.div
-        initial={{ scale: 0.95, opacity: 0, y: 20 }}
-        animate={{ scale: 1, opacity: 1, y: 0 }}
-        exit={{ scale: 0.95, opacity: 0, y: 20 }}
-        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-        className="relative w-full h-full md:h-[90vh] md:max-w-[95vw] flex flex-col md:flex-row bg-background md:border border-border/50 shadow-2xl md:rounded-xl rounded-none overflow-hidden"
+        initial={{ y: '100%' }}
+        animate={{ y: 0 }}
+        exit={{ y: '100%' }}
+        transition={{ type: "spring", damping: 25, stiffness: 200 }}
+        className="absolute inset-0 w-full h-full bg-background overflow-y-auto no-scrollbar"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close Button - Fixed on mobile to ensure it's always visible above the scrollable content */}
-        <button
-          onClick={onClose}
-          className="fixed md:absolute top-24 md:top-4 right-4 z-[100] p-2.5 rounded-full bg-background/80 backdrop-blur-md border border-border text-foreground hover:bg-background transition-colors shadow-sm"
-          aria-label="Close"
-        >
-          <X size={24} />
-        </button>
+        {/* Sticky Header with Close Button */}
+        <div className="sticky top-0 left-0 right-0 z-[110] flex justify-between items-center px-4 pt-20 pb-4 md:px-6 md:pt-24 md:pb-6 bg-background/80 backdrop-blur-lg border-b border-border/10">
+          <div className="pl-2 pt-2">
+            <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
+              {inspiration.category}
+            </span>
+          </div>
+          <button
+            onClick={onClose}
+            className="p-3 rounded-full bg-neutral-900 text-white hover:bg-neutral-800 transition-colors mt-2 shadow-sm"
+            aria-label="Close"
+          >
+            <X size={24} />
+          </button>
+        </div>
 
-        {/* Mobile: Scrollable Vertical Stack. Desktop: Horizontal Split. */}
-        <div className="flex flex-col md:flex-row w-full h-full overflow-y-auto md:overflow-hidden">
+        {/* Content Container - Centered and Bold */}
+        <div className="w-full max-w-[1200px] mx-auto px-4 md:px-8 pb-20">
 
-          {/* Image Section - Main Content */}
-          <div className="flex-1 bg-neutral-100 dark:bg-neutral-900 relative order-2 md:order-1 md:h-full md:overflow-y-auto no-scrollbar">
-            {/* Background blur effect */}
-            <div
-              className="fixed inset-0 opacity-20 blur-3xl scale-110 pointer-events-none"
-              style={{ backgroundImage: `url(${inspiration.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-            />
+          {/* Header Text */}
+          <div className="w-full pt-10 pb-12 text-center max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 text-foreground leading-tight tracking-tight">
+              {inspiration.title}
+            </h2>
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+              {inspiration.description}
+            </p>
 
-            <div className="relative z-10 p-0 md:p-12 flex flex-col gap-0 md:gap-8 min-h-[40vh]">
-              {inspiration.gallery && inspiration.gallery.length > 0 ? (
-                inspiration.gallery.map((img, idx) => (
-                  <img
-                    key={idx}
-                    src={img}
-                    alt={`${inspiration.title} - ${idx + 1}`}
-                    className="w-full h-auto object-contain shadow-none md:shadow-2xl md:rounded-lg"
-                  />
-                ))
-              ) : (
-                <div className="flex items-center justify-center min-h-full p-4 md:p-0">
-                  <img
-                    src={inspiration.image}
-                    alt={inspiration.title}
-                    className="w-full h-auto max-h-full object-contain shadow-2xl rounded-lg"
-                  />
-                </div>
-              )}
-            </div>
+            {/* {inspiration.link && (
+              <a
+                href={inspiration.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 mt-8 px-6 py-3 rounded-full bg-foreground text-background font-medium hover:opacity-90 transition-opacity"
+              >
+                View Project <ArrowUpRight size={18} />
+              </a>
+            )} */}
           </div>
 
-          {/* Info Section */}
-          <div className="w-full md:w-[400px] bg-background p-6 md:p-10 shrink-0 border-t md:border-t-0 md:border-l border-border/50 order-1 md:order-2 overflow-y-auto flex flex-col md:justify-center">
-            {/* Content */}
-            <div className="md:mt-0 pb-10 md:pb-0">
-              <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-3 block">
-                {inspiration.category}
-              </span>
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-foreground leading-tight break-words pr-8">
-                {inspiration.title}
-              </h2>
-              <p className="text-sm md:text-base text-muted-foreground leading-relaxed whitespace-pre-wrap">
-                {inspiration.description || "A conceptual exploration of user interface patterns. This design focuses on minimalist aesthetics and functional density, stripping away the non-essential to reveal the core interaction model."}
-              </p>
-            </div>
+          {/* Large Bold Images */}
+          <div className="flex flex-col gap-8 md:gap-16 w-full">
+            {inspiration.gallery && inspiration.gallery.length > 0 ? (
+              inspiration.gallery.map((img, idx) => (
+                <div key={idx} className="w-full rounded-xl md:rounded-3xl overflow-hidden shadow-2xl bg-neutral-100 dark:bg-neutral-900 border border-border/40">
+                  <img
+                    src={img}
+                    alt={`${inspiration.title} - ${idx + 1}`}
+                    className="w-full h-auto object-cover block"
+                  />
+                </div>
+              ))
+            ) : (
+              <div className="w-full rounded-xl md:rounded-3xl overflow-hidden shadow-2xl bg-neutral-100 dark:bg-neutral-900 border border-border/40">
+                <img
+                  src={inspiration.image}
+                  alt={inspiration.title}
+                  className="w-full h-auto object-cover block"
+                />
+              </div>
+            )}
+          </div>
+
+          {/* Footer Navigation (Optional - connects to next/prev in future) */}
+          <div className="flex justify-center mt-24 pb-12">
+            <button
+              onClick={onClose}
+              className="text-muted-foreground hover:text-foreground transition-colors font-medium tracking-wide uppercase text-sm"
+            >
+              Back to Concepts
+            </button>
           </div>
         </div>
       </motion.div>
