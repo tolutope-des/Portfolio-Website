@@ -408,7 +408,7 @@ export const AVATAR_IMAGE = `./images/avatar/profile.png`;
 export const EMAIL_ADDRESS = "tolutopeadebayo@gmail.com";
 
 // NOTE: Replace this with the actual URL to your hosted Resume PDF
-export const RESUME_URL = "#";
+export const RESUME_URL = "https://drive.google.com/file/d/16WMhIb8yD-L9jdRR0KzqTCdJBDWcEK_4/view?usp=sharing";
 
 export const HERO_TEXT = "Building digital products that feel inevitable.";
 
